@@ -3,13 +3,13 @@
 
 Name:           libspotify
 Version:        12.1.51
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Libspotify SDK
 License:        Proprietary
-URL:            https://developer.spotify.com/technologies/%{name}/
+URL:            https://mopidy.github.io/libspotify-archive/
 
-Source0:        https://developer.spotify.com/download/%{name}/%{name}-%{version}-Linux-i686-release.tar.gz
-Source1:        https://developer.spotify.com/download/%{name}/%{name}-%{version}-Linux-x86_64-release.tar.gz
+Source0:        %{url}/%{name}-%{version}-Linux-i686-release.tar.gz
+Source1:        %{url}/%{name}-%{version}-Linux-x86_64-release.tar.gz
 
 %description
 Build your own personal music streaming applications using the LibSpotify SDK.
@@ -43,9 +43,7 @@ cp -a share/man3/ %{buildroot}%{_mandir}/
 sed -i -e 's|PKG_PREFIX|%{_prefix}|g' %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 gzip -9 %{buildroot}%{_mandir}/man3/*
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSE licenses.xhtml
@@ -60,5 +58,8 @@ gzip -9 %{buildroot}%{_mandir}/man3/*
 %{_mandir}/man3/*
 
 %changelog
+* Sun Jun 14 2020 Simone Caronni <negativo17@gmail.com> - 12.1.51-2
+- Update URL and source links.
+
 * Sat Feb 17 2018 Simone Caronni <negativo17@gmail.com> - 12.1.51-1
 - First build.
