@@ -7,6 +7,7 @@ Release:        2%{?dist}
 Summary:        Libspotify SDK
 License:        Proprietary
 URL:            https://mopidy.github.io/libspotify-archive/
+ExclusiveArch:  %{ix86} x86_64
 
 Source0:        %{url}/%{name}-%{version}-Linux-i686-release.tar.gz
 Source1:        %{url}/%{name}-%{version}-Linux-x86_64-release.tar.gz
